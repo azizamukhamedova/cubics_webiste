@@ -32,6 +32,13 @@ class RubicsCubeProcess(models.Model):
     img6 = models.ImageField(upload_to='rubics_cube')
     img7 = models.ImageField(upload_to='rubics_cube')
 
+class PyramidProcess(models.Model):
+    img1 = models.ImageField(upload_to='pyramid')
+    img2 = models.ImageField(upload_to='pyramid')
+    img3 = models.ImageField(upload_to='pyramid')
+    img4 = models.ImageField(upload_to='pyramid')
+    img5 = models.ImageField(upload_to='pyramid')
+
 
 class Steps(models.Model):
     cube = models.ForeignKey(Cubes, related_name="steps", on_delete=models.CASCADE)

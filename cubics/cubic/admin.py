@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Cubes, RubicsCubeProcess, Steps, StepsStep,
     Card, About, MainAboutBox, AboutBox, AboutCard,
-    PartsOfCube, DiaryNote, Time)
+    PartsOfCube, DiaryNote, Time, PyramidProcess)
 
 # Register your models here.
 admin.site.register(Cubes)
@@ -17,4 +17,5 @@ admin.site.register(AboutBox)
 admin.site.register(AboutCard)
 admin.site.register(DiaryNote)
 admin.site.register(Time)
+admin.site.register(PyramidProcess)
 
