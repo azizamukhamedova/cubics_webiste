@@ -1,0 +1,52 @@
+{% extends "cubic/layout.html" %}
+{% load i18n %}
+{% block body %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="process">
+                    <h1>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            Mening shaxsiy kabinetim
+                        {% else %}
+                            My profile
+                        {% endif %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 m-auto">
+                <ul class="profile-menu d-flex">
+                    <li>
+                        <a href="{% url 'profile-saved-cards' user.id %}">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Formulalar
+                            {% else %}
+                                Saved cards
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'profile-progress' user.id %}">
+                            Progress
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'profile-diary' user.id %}">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Kundaligim
+                            {% else %}
+                                Diary
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}{% endblock %}
+{% endblock %}

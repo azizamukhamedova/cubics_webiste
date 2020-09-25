@@ -1,0 +1,25 @@
+{% extends "cubic/profile_layout.html" %}
+{% block content %}
+<section class="explanation">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <p class="explanation__text">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                    Bu sizning shaxsiy profilingiz. Bu yerda siz formulalarni saqlashingiz , kubiklarni echishga sarflagan vaqtingizni yozib, o'zingizning yutuqlaringizni kuzatib borishingiz mumkin.
+                    {% else %}
+                    This is your personal profile. Here you can save the formulas, Keeping track of your progress by writing down the time you spend solving a cubics.
+                    {% endif %}
+                </p>
+                <p class="explanation__text">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                    Eng asosiysi, shaxsiy kabinetingizda kundalik qismiga kubik yasash jaroyinadi xissiyotlaringizni, yutuq va mag`lubiyatlaringizni qayd qilib boring. Ishoning, bu boshqotirmalarni yechishni o`rganganingizda bu kundalikni o`ib chiqish juda maroqli bo`ladi)
+                    {% else %}
+                    The most important thing is that you can record your feelings, successes, and failures in the process of learning how to solve a cube in the diary part of your account. Believe me, when you learn to solve these puzzles, it will be very interesting to read this diary)
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

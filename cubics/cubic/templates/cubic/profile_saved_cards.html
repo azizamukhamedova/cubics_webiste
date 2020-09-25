@@ -1,0 +1,67 @@
+{% extends "cubic/profile_layout.html" %}
+{% block content %}
+<section class="steps">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="steps_step_name">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                        Saqlangan formulalar
+                    {% else %}
+                        Saved cards
+                    {% endif %}
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for card in saved_cards %}
+                <div class="col-lg-4">
+                    <div class="cube-card card">
+                        <div class="card_name_box d-flex">
+                            <h4 class="card__name-text">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    {{card.name_uz}}
+                                {% else %}
+                                    {{card.name_en}}
+                                {% endif %}
+                            </h4>
+                            <form action="{% url 'save-remove' card.pk %}" method="POST">
+                                {% csrf_token %}
+                                    <button type="submit" name="card_id" value="{{card.id}}" class="ml-auto card-save-button btn btn-link">
+                                        {% if card  in saved_cards %}
+                                            -
+                                        {% else %}
+                                            +
+                                        {% endif %}
+                                    </button>
+                            </form>
+                        </div>
+                        <img class="cube-card-img m-auto"  src="{{ card.img.url }}" alt="case photo">
+                        <p class="card__solution-text">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Yechim:
+                                {% if card.solution_uz %}
+                                    {{card.solution_uz}}
+                                {% else %}
+                                    {{card.solution|safe}}
+                                {% endif %}
+                            {% else %}
+                                Solution: {{card.solution|safe}}
+                            {% endif %}
+                        </p>
+                        <p class="card__exp-text">
+                            {% if card.extra_text_en %}
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    {{card.extra_text_uz}}
+                                {% else %}
+                                    {{card.extra_text_en}}
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

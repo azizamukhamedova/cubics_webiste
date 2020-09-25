@@ -1,0 +1,41 @@
+{% extends "cubic/profile_layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="steps">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="steps_step_name">
+                    Progress
+                </h2>
+            </div>
+        </div>
+        <div class="row m-auto">
+            {% for time in times %}
+            <div class="col-lg-3">
+                <h6 class="progress_date">
+                    {{ time.date|date:"F d, Y" }}
+                </h6>
+                <h4 class="progress_time">
+                    Time: {{time.time}}
+                </h4>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Comment!</legend>
+                        {{ time_form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

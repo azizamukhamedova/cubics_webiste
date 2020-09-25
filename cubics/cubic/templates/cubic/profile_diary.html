@@ -1,0 +1,18 @@
+{% extends "cubic/profile_layout.html" %}
+{% block content %}
+<section class="steps">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="steps_step_name">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                        Mening kundaligim
+                    {% else %}
+                        My diary
+                    {% endif %}
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

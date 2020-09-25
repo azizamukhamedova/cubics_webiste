@@ -1,0 +1,141 @@
+{% extends "cubic/layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block body %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="process">
+                    <h1>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            {{cube.name_uz}} bo`yicha qo`llanma
+                        {% else %}
+                            {{cube.name_en}} Solution Guide
+                        {% endif %}
+                    </h1>
+                    <h2 class="step_name">
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            {{cube.name_uz}} haqida
+                        {% else %}
+                            About {{cube.name_en}}
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <a class="step-title" href="{% url 'cube-detail' cube.id %}">
+                    <div class="step__box d-flex">
+                        <h4 class="step__box__name">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Asosiy sahifaga
+                            {% else %}
+                                Back to the main page
+                            {% endif %}
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="steps">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="steps_step_name">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                        {{cube.name_uz}} qismlari
+                    {% else %}
+                        Parts of the {{cube.name_en}}
+                    {% endif %}
+                </h2>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for part_of_cube in cube.parts_of_cube.all %}
+                <div class="col-lg-4">
+                    <div class="cube-card card">
+                        <h4 class="card__exp-text">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                {{part_of_cube.name_uz}}
+                            {% else %}
+                                {{part_of_cube.name_en}}
+                            {% endif %}
+                        </h4>
+                        <img class="m-auto" src="{{ part_of_cube.img.url }}" alt="case photo">
+                        <p class="card__exp-text">
+                            {% if card.extra_text_en %}
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    {{part_of_cube.extra_text_uz}}
+                                {% else %}
+                                    {{part_of_cube.extra_text_en}}
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% for main_about_box in about.main_about_box.all %}
+            {% for about_box in main_about_box.about_box.all %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="about_box_name  m-auto">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                {{about_box.name_uz}}
+                            {% else %}
+                                {{about_box.name_en}}
+                            {% endif %}
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for card in about_box.about_cards.all %}
+                        <div class="col-lg-3">
+                            <div class="cube-card card">
+                                <h4 class="card__name-text">
+                                    {% if LANGUAGE_CODE == 'uz' %} 
+                                        {{card.name_uz}}
+                                    {% else %}
+                                        {{card.name_en}}
+                                    {% endif %}
+                                </h4>
+                                <img class="m-auto" src="{{ card.img.url }}" alt="case photo">
+                                <p class="card__exp-text">
+                                    {% if card.extra_text_en %}
+                                        {% if LANGUAGE_CODE == 'uz' %} 
+                                            {{card.extra_text_uz}}
+                                        {% else %}
+                                            {{card.extra_text_en}}
+                                        {% endif %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <a class="step-title" href="{% url 'cube-detail' cube.id %}">
+                    <div class="step__box d-flex">
+                        <h4 class="step__box__name">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Asosiy sahifaga
+                            {% else %}
+                                Back to the main page
+                            {% endif %}
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

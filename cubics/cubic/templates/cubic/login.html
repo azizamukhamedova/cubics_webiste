@@ -1,0 +1,47 @@
+{% extends "cubic/layout.html" %}
+{% load i18n %}
+
+{% block body %}
+    <section class="auth_form_sec">
+        <div class="container">
+            <h2 class="authentication__title">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'uz' %} 
+                    Akkauntga kirish
+                {% else %}
+                    Login
+                {% endif %}
+            </h2>
+
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+
+            <form class="authentication" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Login">
+            </form>
+
+            <div class="extra_auth_box">
+                {% if LANGUAGE_CODE == 'uz' %} 
+                    Akkauntingiz yo`qmi?
+                {% else %}
+                    Don't have an account?
+                {% endif %}
+                <a class="authentication__link" href="{% url 'register' %}">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                        Ro`yxatdan o`ting
+                    {% else %}
+                        Register here
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

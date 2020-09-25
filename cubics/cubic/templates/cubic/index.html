@@ -1,0 +1,117 @@
+{% extends "cubic/layout.html" %}
+{% load i18n %}
+{% block body %}
+
+{% get_current_language as LANGUAGE_CODE %}
+  {% if LANGUAGE_CODE == "uz" %}
+<header class="header">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="process">
+                <h1>
+                    Kubik yasashning foydalari
+                </h1>
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+<section class="explanation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 m-auto">
+          <p class="explanation__text">
+            Agar siz kubiklarni yig`ishni o`rganmoqchi bo`lsangiz, albatta bu mashg`ulotning sizga foydali taraflari bilan qiziqasiz. 
+            Kubik yig`ishning sizning tanangizga va miyangizga qanday ta`sir qilishiga qiziqsangiz kerak? Bugun biza sizga bu mashg`ulotning ba`zi bir foydali jihatlari bilan bo`lishamiz.
+          </p>
+          <p class="explanation__text">
+            <strong>1. Xotirangizni yaxshilaydi.</strong> Kubik rubikni yasayotganingizda ko`p formulalardan foydalanasiz va bu sizning eslab qolish qobiliyatingizni yaxshilaydi. 
+          </p>
+          <p class="explanation__text">
+            <strong>2. Tez fikrlashga yordam beradi.</strong> Siz qisqa vaqt davomida aniq fikrlash qobiliyatingizni charxlaysiz.
+          </p>
+          <p class="explanation__text">
+            <strong>3. Muammoni yechish ko`nikmalarini o`rgatadi.</strong> Muammo, ya`ni kubik rubikni yasayotganinigizda duch keladigan holatlarni algoritmlar(formulalar) yordamida yechish orqali siz hayotingizdagi muammolarni yechishni o`rganasiz.
+          </p>
+          <p class="explanation__text">
+            <strong>4. Muammoni bir necha kichik bajarilishi kerak bo`lgan ishlarga bo`lishni o`rgatadi.</strong> Bu ko`nikma yordamida hayotingizni bitta katta vazifani kichkina vazifalarga bo`lib , tezroq va osonroq yechishingizga yordam beradi.
+          </p>
+          <p class="explanation__text">
+            <strong>5. Bir narsaga fikringizni jamlay olishga yordam beradi.</strong> Sizni sabrli inson qiladi. 
+          </p>
+          <p class="explanation__text">
+            Kubiklarni yasashning foydalari juda ko`p, bularni o`zingiz kubik yasayotgan vaqtingizda sezasiz va miyangiz yaxshiroq bo`lib borayotganiga guvoh bo`lasiz.
+          </p>
+          <p class="explanation__text">
+            Bugunoq kubik yasashni o`rganishni boshlang. Bunda sizga bizning saytimiz yordam  beradi. O`zingiz xoxlagan kubikni kubiklar bo`limidan tanlang va o`rganing. Saytimizdan ro`yxatdan o`tib, shaxsiy kabinetingizda kubikni yasahga ketgan vaqtingizni yozib boring va o`z progresingizni kuzating. Kubiklarning yechimlarini o`zingizning shaxsiy kabinetingizga saqlab qo`ying va takrorlang.
+          </p>
+          <p class="explanation__text">
+            Eng asosiysi, shaxsiy kabinetingizda kundalik qismiga kubik yasash jaroyinadi xissiyotlaringizni, yutuq va mag`lubiyatlaringizni qayd qilib boring. Ishoning, bu boshqotirmalarni yechishni o`rganganingizda bu kundalikni o`ib chiqish juda maroqli bo`ladi)
+          </p>
+          <p class="explanation__text">
+            Kubik yasashni o`rganish biroz qiyin bo`lishi mumkin, albatta, lekin bu sizning qo`lingizdan keladi! O`zingizga ishoning va harakat qiling! 
+          </p>
+      </div>
+    </div>
+  </div>
+</section>
+   {% else %}
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="process">
+              <h1>
+               Benefits solving a cube
+              </h1>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="explanation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 m-auto">
+        <p class="explanation__text">
+          If you want to learn how to solve cubes, you will definitely be interested in the benefits of this exercise.
+          Wondering how solving cube affects your body and brain? Today we will share with you some benefits of this. 
+        </p>
+        <p class="explanation__text">
+          <strong>1. Improves your memory.</strong> You use a lot of formulas when solving a cube, and this improves your memory. 
+        </p>
+        <p class="explanation__text">
+          <strong>2. Helps to think fast.</strong> You’ll sharpen your ability to think clearly in a short amount of time. 
+        </p>
+        <p class="explanation__text">
+          <strong>3. Helps to become a better problem-solver.</strong> Sure, if you just learn known methods to solve a rubiks cube you won’t benefit much in terms of becoming a better problem solver but if you, as many cubers do, start figuring out your own ways of solving the cube it will help you become more creative with doing things.
+        </p>
+        <p class="explanation__text">
+          <strong>4. Breaking multiple tasks into easy steps.</strong> This skill will help you solve one big task in your life into smaller tasks and address each task one by one.
+        </p>
+        <p class="explanation__text">
+          <strong>5. It helps you focus on something.</strong> Makes you a patient person.
+        </p>
+        <p class="explanation__text">
+          There are many benefits of solving cubes, you will feel them when you solve a cube and you will see that your brain is getting better.
+        </p>
+        <p class="explanation__text">
+          Start learning to make a cube today. Our site will help you with this. Select the cube you want from the Cubes section and explore. Register on our site, write down the time you spent making the cube in your account, and track your progress. Save and repeat the solutions of the cubes in your cabinet.
+        </p>
+        <p class="explanation__text">
+          The most important thing is to record your feelings, successes, and failures in the process of learning how to solve a cube in the diary part of your account. Believe me, when you learn to solve these puzzles, it will be very interesting to read this diary) 
+        </p>
+        <p class="explanation__text">
+          It can be a little difficult to learn how to make a cube, but you can do it! Believe in yourself and try!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+   {% endif %}
+   {{saved_cards}}
+   {{step_id}}<br><hr>
+   {{card}}
+
+{% endblock %}

@@ -1,0 +1,305 @@
+/* Specification */
+
+body{
+    /*background: #F6FCFF;*/
+    padding: 0;
+    margin: 0;
+    font-family: 'Quantico', sans-serif;
+    font-size: 26px;
+    color: #010101;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0;
+    padding: 0;
+}
+
+ul, li{
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.step__box__name{
+    color:  #032943;
+}
+
+.language_switcher{
+    margin-top: 20px;
+    border: 1px solid #032943;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.lang_switch_sel{
+    margin-right: 5px;
+    color:  #032943;
+    border-radius: 4px;
+    border: 1px solid #fff;
+}
+
+.lang_switch_submit{
+    border-radius: 4px;
+    border: 1px solid #fff;
+    background:  #d9f0ff;
+}
+
+
+
+/* Header */
+
+.header{
+    padding: 37px;
+}
+
+.menu li a{
+    color: #032943; 
+}
+
+.menu li a:hover{
+    color: #0c72b6; 
+}
+
+.menu li{
+    font-size: 20px;
+    margin-left: 42px;
+}
+
+.profile-menu li a{
+    color: #053e64; 
+}
+
+.profile-menu li a:hover{
+    color: #0c72b6; 
+}
+
+.profile-menu li{
+    font-family: ABeeZee;
+    font-size: 22px;
+    margin-left: 42px;
+}
+
+.process{
+    margin-top: 30px;
+}
+
+h1{
+    margin: 0 auto;
+    text-align:center;
+    font-weight: 700;
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: #032135; 
+}
+
+.step_name{
+    margin: 0 auto;
+    text-align:center;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #052d47; 
+}
+
+.steps_step_name{
+    margin: 0 auto;
+    text-align:center;
+    font-weight: 700;
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: #052d47; 
+    font-family: ABeeZee;
+}
+
+.about_box_name{
+    margin: 0 auto;
+    text-align:center;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #02385c; 
+    font-family: ABeeZee;
+}
+
+.process__img{
+    height: 120px;
+    margin-right: 50px;
+    margin-bottom: 40px;
+}
+
+
+
+/* Explanation */
+
+.explanation{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.explanation__text{
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: ABeeZee;
+}
+
+/* Steps */
+
+.step__box{
+    background: #BCE4F6;
+    border-radius: 0px 0px 50px 0px;
+    padding: 15px 46px;
+    margin-bottom: 20px;
+}
+
+.step__box:hover{
+    background: #9bdcfa;
+    margin-bottom: 20px;
+    border: 1px solid #0a66a3;
+}
+
+.step__box img{
+    width: 22px;
+    height: 18px;
+    margin-top: 5px;
+}
+
+
+/* Steps boxes */
+
+.card__name-text{
+    margin: 15px 20px;
+}
+
+.card__solution-text{
+    margin: 10px 20px;
+}
+
+.card__exp-text{
+    margin: 0 20px;
+    font-family: ABeeZee, sans-serif;
+    line-height: 25px;
+    font-size: 22px;
+    color: #363636;
+    margin-bottom: 20px;
+    max-width: 150px;
+}
+
+.cube-card{
+    border-radius: 5px;
+    border: 2px solid #BCE4F6;
+    width: 320px;
+    margin-bottom: 60px;
+}
+
+.about_box_cards{
+    border-radius: 5px;
+    border: 2px solid #BCE4F6;
+    width: 320px;
+    margin-bottom: 60px;
+}
+
+.cube_card_borderless{
+    border: none;
+    width: 320px;
+    margin-bottom: 60px;
+}
+
+.cube-card img{
+    height: 160px;
+}
+
+/* Congratulations */
+
+.congratulations{
+    margin: 45px 0;
+}
+
+.congra__text{
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: ABeeZee;
+    color: #032943;
+}
+
+/* Footer */
+footer{
+    background: #032943;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer__logo{
+    height: 40px;
+}
+.footer__text{
+    font-family: Prosto One;
+    font-size: 16px;
+    line-height: 30px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* forms */ 
+.authentication{
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: ABeeZee;
+}
+
+.authentication__title{
+    margin-top: 50px;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: ABeeZee;
+}
+
+.authentication__link{
+    margin-top: 50px;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: ABeeZee;
+}
+
+.extra_auth_box{
+    font-family: ABeeZee;
+    margin-bottom: 100px;
+}
+
+/*Icons*/
+.about_save_photo{
+    height: 20px;
+}
+
+.card-save-photo{
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.card-save-button{
+    margin-left: auto;
+    margin-top: -15px;
+    margin-right: 20px;
+    font-size: 50px;
+
+}
+
+/* Diary */
+.progress_date{
+    font-family: ABeeZee;
+    font-size: 14px;
+    color: #032943;
+    margin-bottom: 8px;
+}
+
+.progress_time{
+    font-family: ABeeZee;
+    font-size: 24px;
+    color: #021827;
+    margin-bottom: 8px;
+}

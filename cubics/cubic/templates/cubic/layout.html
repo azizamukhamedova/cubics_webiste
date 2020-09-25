@@ -1,0 +1,137 @@
+{% load static i18n %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'cubic/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cubic/main.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{% static 'cubic/img/main-logo.png' %}" alt="logo" class="logo">
+                </div>
+                <div class="col-lg-8 ml-auto">
+                    <ul class="menu d-flex collapse navbar-collapse" id="navbarSupportedContent">
+                        <li>
+                            <a href="{% url 'index' %}">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Foydalari
+                                {% else %}
+                                    Benefits
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Kubiklar
+                                {% else %}
+                                    Cubes
+                                {% endif %}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for cube in cubes %}
+                              <a class="dropdown-item" href="{% url 'cube-detail' cube.id %}">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    {{cube.name_uz}}
+                                {% else %}
+                                    {{cube.name_en}}
+                                {% endif %}
+                            </a>
+                            {% endfor %}
+                            </div>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'profile-main' user.id %}">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Profilim
+                                {% else %}
+                                    Profile
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Chiqish
+                                {% else %}
+                                    Log out
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'login' %}">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Kirish
+                                {% else %}
+                                    Log in
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register' %}">
+                                {% if LANGUAGE_CODE == 'uz' %} 
+                                    Ro`yxatdan o`tish
+                                {% else %}
+                                    Register
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% get_current_language as LANGUAGE_CODE %}
+                        <li>
+                            <form class="d-flex language_switcher" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <select class="lang_switch_sel" name="language">
+                                    <option class="lang_switch_opt" value="uz"{% if LANGUAGE_CODE == 'uz' %} selected{% endif %}>
+                                        uz
+                                    </option>
+                                    <option class="lang_switch_opt" value="en"{% if LANGUAGE_CODE == 'en' %} selected{% endif %}>
+                                        en
+                                    </option>
+                                </select>
+                                <input class="lang_switch_submit" type="submit" value="Set">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>  
+    {% block body %}{% endblock %}  
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 m-auto">
+                    <img class="m-auto footer__logo" src="{% static 'cubic/img/logowhite.png' %}" alt="whitelogo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <h4 class="footer__text">
+                        This website has been created by Azizaaly
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
