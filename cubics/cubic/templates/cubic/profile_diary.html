@@ -1,4 +1,6 @@
 {% extends "cubic/profile_layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
 {% block content %}
 <section class="steps">
     <div class="container">
@@ -11,6 +13,48 @@
                         My diary
                     {% endif %}
                 </h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for note in notes %}
+            <div class="col-lg-10 m-auto">
+                <div class="diary-note-box">
+                    <h6 class="progress_date diary-date">
+                        {{ note.date|date:"F d, Y" }}
+                    </h6>
+                    <h4 class="progress_time diary-note">
+                        {{note.text}}
+                    </h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="POST" action="{% url 'diary-note-create' %}">
+                    {% csrf_token %}
+                    <fieldset class="form-group progress-time-form">
+                        <legend class="mb-8 progress-time-title">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                            O`z xissiyotlaringiz bilan o`rtoqlashing. Esingizda bo`lsin, bu kundalikni sizdan boshqa hech kim ko`ra olmaydi.
+                            {% else %}
+                            Share with your feelings, success and failures with your diary. Remember, You are only person who has access to here.
+                            {% endif %}
+                        </legend>
+                        <textarea class="progress-time-input" name="text" cols="33" rows="10" class="textarea" required id="id_text">
+                        </textarea>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info  progress-time-button" type="submit">
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                Saqlash
+                            {% else %}
+                                Save
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -147,62 +147,42 @@ class profileDiary(LoginRequiredMixin, ListView):
         about = get_object_or_404(About, id=self.kwargs['pk'])
         cube = about.cube
         cubes = Cubes.objects.all()
+        notes = DiaryNote.objects.filter(author=self.request.user.id)
 
+        context["notes"] = notes
         context["note_form"] = DiaryNoteForm()
         context["cubes"] = cubes
         context["cube"] = cube
         return context
 
 
-#def save(request, pk):
-    #card = get_object_or_404(Card, id=request.POST.get('card_id'))
-    #step_page = card.step.main_step.id
+def save(request, pk):
+    card = get_object_or_404(Card, id=request.POST.get('card_id'))
+    step_page = card.step.main_step.id
 
-    #saved = False
-    #if card.saved.filter(id=request.user.id).exists():
-        #card.saved.remove(request.user)
-        #saved = False
-    #else:
-        #card.saved.add(request.user)
-        #saved = True
+    saved = False
+    if card.saved.filter(id=request.user.id).exists():
+        card.saved.remove(request.user)
+        saved = False
+    else:
+        card.saved.add(request.user)
+        saved = True
 
-    #return redirect('step-detail', pk=step_page)
+    return redirect('step-detail', pk=step_page)
 
 
-class save(LoginRequiredMixin, ListView):
-    model = Card
-    template_name = 'cubic/profile_saved_cards.html'  # <app>/<model>_<view_type>.html
-    context_object_name = 'cards'
+def saveProfile(request, pk):
+    card = get_object_or_404(Card, id=request.POST.get('card_id'))
 
-    def get_queryset(self):
-        user = get_object_or_404(User, username = self.kwargs.get("username"))
-        cards = Card.objects.all()
-        saved_cards = []
+    saved = False
+    if card.saved.filter(id=request.user.id).exists():
+        card.saved.remove(request.user)
+        saved = False
+    else:
+        card.saved.add(request.user)
+        saved = True
 
-        for item in cards:
-            if item.saved.filter(id=user.id).exists():
-                saved_cards.append(item)
-
-        return saved_cards
-
-    #def get_context_data(self, *args, **kwargs):
-    
-        #context = super(save, self).get_context_data(*args, **kwargs)
-        #user = get_object_or_404(User, username = self.kwargs.get("username"))
-        #cubes = Cubes.objects.all()
-        #cards = Card.objects.all()
-        #saved_cards = []
-
-        #for item in cards:
-           # if item.saved.filter(id=user.id).exists():
-               # saved_cards.append(item)
-
-        #context["note_form"] = DiaryNoteForm()
-        #context["cubes"] = cubes
-        #context["cube"] = cube
-        #context["saved_cards"] = saved_cards
-        #return context
-
+    return redirect('profile-saved-cards', pk=request.user.id)
 
 
 def mainProfile(request, pk):
@@ -210,6 +190,36 @@ def mainProfile(request, pk):
     return render(request, 'cubic/profile.html',{
         'cubes' : Cubes.objects.all(),
     })
+
+
+def ProgressView(request):
+    if request.method == "POST":
+        form = ProgressTimeForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('profile-progress', pk=request.user.id)
+        else:
+            form = ProgressTimeForm()
+            return render(request, 'cubic/profile_progress.html', {
+                "time_form" : form
+            })
+
+
+def DiaryNoteView(request):
+    if request.method == "POST":
+        form = DiaryNoteForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('profile-diary', pk=request.user.id)
+        else:
+            form = DiaryNoteForm()
+            return render(request, 'cubic/profile_diary.html', {
+                "note_form" : form
+            })
 
 
 def index(request):

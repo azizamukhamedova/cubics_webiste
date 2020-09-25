@@ -301,5 +301,48 @@ footer{
     font-family: ABeeZee;
     font-size: 24px;
     color: #021827;
-    margin-bottom: 8px;
+    margin-bottom: 40px;
+}
+
+.progress-time-form{
+    margin-top: 50px;
+}
+
+.progress-time-title{
+    font-family: ABeeZee;
+    color: #032943;
+    margin-bottom: 5px;
+}
+
+.progress-time-input{
+    border: 3px solid #56C3F4;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.progress-time-button{
+    background: #16679E;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 180px;
+    font-family: ABeeZee;
+}
+
+.diary-note-box{
+    border: 3px solid #56C3F4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.diary-date{
+    border-bottom: 1px solid #021827;
+    padding: 5px;
+}
+
+.diary-note{
+    color: #003F5B;
+    font-size: 18px;
 }

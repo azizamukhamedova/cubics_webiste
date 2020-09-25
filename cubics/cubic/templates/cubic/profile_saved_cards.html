@@ -1,10 +1,12 @@
 {% extends "cubic/profile_layout.html" %}
+{% load i18n %}
 {% block content %}
 <section class="steps">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="steps_step_name">
+                    {% get_current_language as LANGUAGE_CODE %}
                     {% if LANGUAGE_CODE == 'uz' %} 
                         Saqlangan formulalar
                     {% else %}
@@ -25,7 +27,7 @@
                                     {{card.name_en}}
                                 {% endif %}
                             </h4>
-                            <form action="{% url 'save-remove' card.pk %}" method="POST">
+                            <form action="{% url 'save-remove-profile' card.pk %}" method="POST">
                                 {% csrf_token %}
                                     <button type="submit" name="card_id" value="{{card.id}}" class="ml-auto card-save-button btn btn-link">
                                         {% if card  in saved_cards %}
