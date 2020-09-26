@@ -4,7 +4,11 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidde
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from .models import (User, Cubes, RubicsCubeProcess, Steps, StepsStep, Card, About, AboutBox, AboutCard, Time, DiaryNote)
+from .models import (
+                    User, Cubes, RubicsCubeProcess, Steps, StepsStep, 
+                    Card, About, AboutBox, AboutCard, Time, DiaryNote,
+                    PyramidProcess
+)
 from django import forms
 from django.forms import ModelForm
 
@@ -28,6 +32,11 @@ class CubeDetailView(DetailView):
 
         if cube.id == 1:
             process = RubicsCubeProcess.objects.first()
+
+        if cube.id == 3:
+            process = PyramidProcess.objects.first()
+    
+        process = PyramidProcess.objects.first()
 
         context["process"] = process
         context["cubes"] = cubes
@@ -115,19 +124,34 @@ class profileProgress(LoginRequiredMixin, ListView):
         about = get_object_or_404(About, id=self.kwargs['pk'])
         cube = about.cube
         cubes = Cubes.objects.all()
-        times = Time.objects.filter(author=self.request.user.id)
+        rubic_times = Time.objects.filter(author=self.request.user.id, cube=1)
+        pyraminx_times = Time.objects.filter(author=self.request.user.id, cube=3)
+        mirror_times = Time.objects.filter(author=self.request.user.id, cube=4)
 
         context["time_form"] = ProgressTimeForm()
         context["cubes"] = cubes
         context["cube"] = cube
-        context["times"] = times
+
+        if rubic_times:
+            context["rubic_times"] = rubic_times
+
+        if mirror_times:
+            context["mirror_times"] = mirror_times
+
+        if pyraminx_times:
+            context["pyraminx_times"] = pyraminx_times
         return context
 
 class ProgressTimeForm(forms.ModelForm):
     time = forms.CharField(max_length=100) 
+    cube = forms.Select()
     class Meta:
         model = Time
-        fields = ['time']
+        fields = ['time', 'cube']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cube'].queryset = Cubes.objects.all()
 
 class DiaryNoteForm(forms.ModelForm):
     text = forms.TextInput

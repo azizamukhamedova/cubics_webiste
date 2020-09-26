@@ -11,18 +11,60 @@
                 </h2>
             </div>
         </div>
-        <div class="row">
-            {% for time in times %}
-            <div class="col-lg-3">
-                <h6 class="progress_date">
-                    {{ time.date|date:"F d, Y" }}
-                </h6>
-                <h4 class="progress_time">
-                    Time: {{time.time}}
-                </h4>
+        {% if rubic_times %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="time_box_name">
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            Kubik Rubik bo`yicha
+                        {% else %}
+                            Progress for Rubik's Cube
+                        {% endif %}
+                    </h4>
+                </div>
             </div>
-            {% endfor %}
-        </div>
+            <div class="row">
+                {% for time in rubic_times %}
+            
+                <div class="col-lg-3">
+                    <h6 class="progress_date">
+                        {{ time.date|date:"F d, Y" }}
+                    </h6>
+                    <h4 class="progress_time">
+                        Time: {{time.time}}
+                    </h4>
+                </div>
+        
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if pyraminx_times %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="time_box_name">
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            Kubik Rubik bo`yicha
+                        {% else %}
+                            Progress for Rubik's Cube
+                        {% endif %}
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                {% for time in pyraminx_times %}
+            
+                <div class="col-lg-3">
+                    <h6 class="progress_date">
+                        {{ time.date|date:"F d, Y" }}
+                    </h6>
+                    <h4 class="progress_time">
+                        Time: {{time.time}}
+                    </h4>
+                </div>
+        
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-lg-12">
                 <form method="POST" action="{% url 'progress-time' %}">
@@ -36,7 +78,19 @@
                                 Write down a time you spent solving a cube
                             {% endif %}
                         </legend>
-                        <input type="text" name="time" maxlength="100" class="progress-time-input textinput textInput" required id="id_time"> </div> </div>
+                        <input type="text" name="time" maxlength="100" class="progress-time-input textinput textInput" required id="id_time">
+                        <select name="cube" required id="id_cube" class="progress-time-input">
+                            <option value="" class="cube-option" selected>---------</option>
+                            {% for cube in cubes %}
+                                <option value="{{cube.id}}" class="cube-option">
+                                    {% if LANGUAGE_CODE == 'uz' %} 
+                                        {{cube.name_uz}}
+                                    {% else %}
+                                        {{cube.name_en}}
+                                    {% endif %}
+                                </option>
+                            {% endfor %}
+                          </select>
                     </fieldset>
                     <div class="form-group">
                         <button class="btn btn-outline-info  progress-time-button" type="submit">

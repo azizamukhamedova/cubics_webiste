@@ -141,6 +141,7 @@ class PartsOfCube(models.Model):
 
 class Time(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    cube = models.ForeignKey(Cubes, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     time = models.CharField(max_length=100)
 

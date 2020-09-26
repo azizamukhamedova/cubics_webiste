@@ -57,6 +57,17 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-lg-10 m-auto">
+                <p class="explanation__text">
+                    {% if LANGUAGE_CODE == 'uz' %} 
+                        {{step.extra_text_uz | safe}}
+                    {% else %}
+                        {{step.extra_text_en|safe }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="row">
             {% for card in step.cards.all %}
                 <div class="col-lg-4">
                     <div class="cube-card card">

@@ -48,9 +48,42 @@
                         </div>
                     </div>
                 </div>
-            {% else %}
-                <h1>this is an another cubics about page</h1>
             {% endif %}
+            {% if cube.name_en == 'Pyraminx' %}
+                <div class="row d-flex">
+                    <div class="d-flex m-auto">
+                        <div class="col-lg-4">
+                            <img src="{{ process.img1.url }}" alt="" class="process__img">
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="{{ process.img2.url }}" alt="" class="process__img">
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="{{ process.img3.url }}" alt="" class="process__img">
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex">
+                    <div class="d-flex m-auto">
+                        <div class="col-lg-5">
+                            <img src="{{ process.img4.url }}" alt="" class="process__img">
+                        </div>
+                        <div class="col-lg-5">
+                            <img src="{{ process.img5.url }}" alt="" class="process__img">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if cube.name_en == 'Mirror Cube' %}
+                <div class="row d-flex">
+                    <div class="m-auto">
+                        <div class="col-lg-4">
+                            <img src="{% static 'cubic/img/mirror_cube.png' %}" alt="cube photo" class="process__img">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </header>
     <section class="explanation">

@@ -329,6 +329,31 @@ footer{
     font-family: ABeeZee;
 }
 
+.cube-option{
+    font-family: ABeeZee;
+    font-size: 18px;
+}
+
+select:focus{
+    outline:none;
+}
+
+button:focus{
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.time_box_name{
+    font-size: 30px;
+    font-family: ABeeZee;
+    color: #021827;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
 .diary-note-box{
     border: 3px solid #56C3F4;
     box-sizing: border-box;
