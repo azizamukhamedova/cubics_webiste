@@ -9,6 +9,10 @@ body{
     color: #010101;
 }
 
+.logo{
+    margin-left: 30px;
+}
+
 h1, h2, h3, h4, h5, h6, p{
     margin: 0;
     padding: 0;
@@ -35,6 +39,10 @@ ul, li{
     border-radius: 4px;
 }
 
+.language_switcher_li{
+    margin-left: 200px;
+}
+
 .lang_switch_sel{
     margin-right: 5px;
     color:  #032943;
@@ -54,6 +62,7 @@ ul, li{
 
 .menu{
     display: flex !important;
+    margin-left: 50px;
 }
 
 .header{
@@ -382,7 +391,7 @@ input:focus{
 }
 
 .toggle-button{
-    display: block;
+    display: none !important;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
@@ -398,15 +407,37 @@ input:focus{
 }
 
 /* Media queries */
-@media (max-width: 800px) {
+
+@media screen and (max-width: 1040px) {
+
+    .logo{
+        margin-left: 0px;
+    }
 
     .toggle-button {
-        display: flex;
+        display: flex !important;
     }
 
     .menu {
-        display: none;
+        display: none !important;
         width: 100%;
+    }
+
+    .menu li {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .menu li {
+        text-align: center;
+    }
+
+    .menu li a {
+        padding: .5rem 1rem;
+    }
+
+    .menu.active {
+        display: flex;
     }
 }
 
