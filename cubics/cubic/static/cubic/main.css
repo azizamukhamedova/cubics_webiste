@@ -52,8 +52,17 @@ ul, li{
 
 /* Header */
 
+.menu{
+    display: flex !important;
+}
+
 .header{
     padding: 37px;
+}
+
+.language_switcher_li{
+    font-size: 20px;
+    margin-left: 42px;
 }
 
 .menu li a{
@@ -371,3 +380,33 @@ input:focus{
     color: #003F5B;
     font-size: 18px;
 }
+
+.toggle-button{
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    margin-right: 20px;
+}
+
+.bar{
+    height: 3px;
+    width: 100%;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+/* Media queries */
+@media (max-width: 800px) {
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        width: 100%;
+    }
+}
+

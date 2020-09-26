@@ -1,0 +1,36 @@
+{% extends "cubic/profile_layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="steps">
+    <div class="container">
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="mb-8 progress-time-title">
+                        {% get_current_language as LANGUAGE_CODE %}
+                            {% if LANGUAGE_CODE == 'uz' %} 
+                                O`zgartirish
+                            {% else %}
+                                Edit Note
+                            {% endif %}
+                    </legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info  progress-time-button" type="submit">
+                        {% if LANGUAGE_CODE == 'uz' %} 
+                            Saqlash
+                        {% else %}
+                            Save
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

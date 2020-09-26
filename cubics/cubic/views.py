@@ -301,3 +301,34 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "cubic/register.html")
+
+
+class NoteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = DiaryNote   
+    fields = ['text']
+    template_name = "cubic/note_update.html"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        item = self.get_object()
+        if self.request.user == item.author:
+            return True
+        return False
+
+
+class NoteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = DiaryNote
+    template_name = "cubic/note_delete.html"
+
+    def test_func(self):
+        item = self.get_object()
+        if self.request.user == item.author:
+            return True
+        return False
+
+    def get_success_url(self):
+        # I cannot access the 'pk' of the deleted object here
+        return reverse('profile-diary', kwargs={'pk': self.request.user.id})

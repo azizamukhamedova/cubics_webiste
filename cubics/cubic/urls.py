@@ -24,4 +24,6 @@ urlpatterns = [
 
     path("progress/set/", views.ProgressView, name="progress-time"),
     path("diary/note/", views.DiaryNoteView, name="diary-note-create"),
+    path("item/<int:pk>/edit/", views.NoteUpdateView.as_view(), name="note-update"),
+    path("item/<int:pk>/delete/", views.NoteDeleteView.as_view(), name="note-delete"),
 ]
