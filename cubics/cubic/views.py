@@ -36,12 +36,15 @@ class CubeDetailView(DetailView):
         if cube.id == 3:
             process = PyramidProcess.objects.first()
     
-        process = PyramidProcess.objects.first()
-
-        context["process"] = process
-        context["cubes"] = cubes
-        context["cube"] = cube
-        return context
+        if cube.id == 4:
+            context["cubes"] = cubes
+            context["cube"] = cube
+            return context
+        else:
+            context["process"] = process
+            context["cubes"] = cubes
+            context["cube"] = cube
+            return context
 
 
 class StepDetailView(DetailView):

@@ -18,35 +18,43 @@
                     </div>
                 </div>
             </div>
-            {% if cube.name_en == 'Rubik’s Cube' %}
-                <div class="row d-flex">
-                    <div class="d-flex m-auto">
-                        <div class="col-lg-3">
-                            <img src="{{ process.img1.url }}" alt="" class="process__img">
+            {% if cube.id == 1 %}
+                <div class="row">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img1.url }}" alt="" class="">
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <img src="{{ process.img2.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img2.url }}" alt="" class="">
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <img src="{{ process.img3.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img3.url }}" alt="" class="">
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <img src="{{ process.img4.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img4.url }}" alt="" class="">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row d-flex">
-                    <div class="d-flex m-auto">
-                        <div class="col-lg-4">
-                            <img src="{{ process.img5.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img5.url }}" alt="" class="">
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <img src="{{ process.img6.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img6.url }}" alt="" class="">
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <img src="{{ process.img7.url }}" alt="" class="process__img">
+                        <div class="col-lg-3 col-sm-4 col-6">
+                            <div class="process__img">
+                                <img src="{{ process.img7.url }}" alt="" class="">
+                            </div>
                         </div>
-                    </div>
                 </div>
             {% endif %}
             {% if cube.name_en == 'Pyraminx' %}
@@ -124,7 +132,7 @@
                 {% endif %}
                 {% if cube.steps %}
                 {% for main_step in cube.steps.all %}
-                    <div class="col-lg-10 m-auto">
+                    <div class="col-lg-10 col-10 m-auto">
                         <a class="step-title" href="{% url 'step-detail' main_step.id %}">
                             <div class="step__box d-flex">
                                 <h4 class="step__box__name">

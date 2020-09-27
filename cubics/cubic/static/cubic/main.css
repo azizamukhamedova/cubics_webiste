@@ -9,6 +9,10 @@ body{
     color: #010101;
 }
 
+.navbar{
+    display: flex;
+}
+
 .logo{
     margin-left: 30px;
 }
@@ -33,13 +37,13 @@ ul, li{
 }
 
 .language_switcher{
-    margin-top: 20px;
     border: 1px solid #032943;
     padding: 2px;
     border-radius: 4px;
 }
 
 .language_switcher_li{
+    margin-top: 10px;
     margin-left: 200px;
 }
 
@@ -61,12 +65,15 @@ ul, li{
 /* Header */
 
 .menu{
-    display: flex !important;
+    display: flex;
     margin-left: 50px;
+    margin-top: 25px;
 }
 
-.header{
+.navbar{
     padding: 37px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .language_switcher_li{
@@ -74,15 +81,15 @@ ul, li{
     margin-left: 42px;
 }
 
-.menu li a{
-    color: #032943; 
+.nav-link{
+    color: #032943 !important; 
 }
 
-.menu li a:hover{
-    color: #0c72b6; 
+.nav-link:hover{
+    color: #0c72b6 !important; 
 }
 
-.menu li{
+.nav-item{
     font-size: 20px;
     margin-left: 42px;
 }
@@ -143,11 +150,14 @@ h1{
     font-family: ABeeZee;
 }
 
-.process__img{
+.process__img img{
     height: 120px;
-    margin-right: 50px;
     margin-bottom: 40px;
 }
+.process__img img:nth-child(1){
+    margin-left: 35%;
+}
+
 
 
 
@@ -402,42 +412,164 @@ input:focus{
 .bar{
     height: 3px;
     width: 100%;
-    background-color: blue;
+    background-color: #003F5B;
     border-radius: 10px;
 }
 
+.active-menu{
+    position: absolute;
+    right: 0;
+    top: 170px;
+    height: 92vh;
+    background-color: #003F5B;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    align-items: center;
+    width: 50%;
+    /*transform: translateX(100%);*/
+    transition: transform 0.5s ease-in;
+}
+
 /* Media queries */
-
-@media screen and (max-width: 1040px) {
-
+@media screen and (max-width: 1092px) {
+    .nav-item{
+        font-size: 18px;
+        margin-left: 22px;
+    }
     .logo{
-        margin-left: 0px;
-    }
-
-    .toggle-button {
-        display: flex !important;
-    }
-
-    .menu {
-        display: none !important;
-        width: 100%;
-    }
-
-    .menu li {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .menu li {
-        text-align: center;
-    }
-
-    .menu li a {
-        padding: .5rem 1rem;
-    }
-
-    .menu.active {
-        display: flex;
+        height: 55px;
     }
 }
 
+@media screen and (max-width: 1050px) {
+    .logo{
+        margin-left: 0px;
+    }
+    .process__img img:nth-child(1){
+        margin-left: 20%;
+    }
+    
+}
+
+@media screen and (max-width: 991px) {
+    .footer__logo{
+        margin-left: 48% !important;
+    }
+    .profile-menu li{
+        font-family: ABeeZee;
+        font-size: 22px;
+        margin-left: 30px;
+    }
+    .profile-menu{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .profile-menu li{
+        text-align: center;
+        margin-bottom:10px;
+    }
+    
+}
+
+@media screen and (max-width: 771px) {
+    .logo{
+        height: 50px;
+    }
+    .cube-card img{
+        height: 140px;
+    }
+    h1{
+        font-size: 40px;
+        margin-bottom: 25px;
+    }
+    .cube-card {
+        width: 275px;
+        margin-bottom: 50px;
+    }
+    .step_name {
+        font-size: 34px;
+        margin-bottom: 18px;
+    }
+    .steps_step_name {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .card__solution-text, .card__name-text{
+        font-size: 24px;
+    }
+    .card__exp-text {
+        line-height: 23px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .cube-card {
+        width: 240px;
+        margin-bottom: 50px;
+    }
+    .cube-card img{
+        height: 110px;
+    }
+    h1{
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+    .step_name {
+        font-size: 30px;
+        margin-bottom: 18px;
+    }
+    .steps_step_name {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .cube-card {
+        width: 210px;
+        margin-bottom: 40px;
+    }
+    .cube-card img{
+        height: 100px;
+    }
+    .card__solution-text, .card__name-text{
+        font-size: 22px;
+    }
+    .card__exp-text {
+        line-height: 23px;
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .logo{
+        height: 40px;
+    }
+    .cube-card {
+        width: 180px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .cube-row{
+        margin-left: auto;
+        flex-direction: column;
+    }
+    .cube-card {
+        width: 250px;
+        margin-bottom: 40px;
+    }
+    .cube-card img{
+        height: 130px;
+    }
+}
+
+@media screen and (max-width: 324px) {
+    .logo{
+        height:30px;
+    }
+}

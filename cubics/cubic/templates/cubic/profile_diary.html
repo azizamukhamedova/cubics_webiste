@@ -34,7 +34,7 @@
             {% endfor %}
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-10">
                 <form method="POST" action="{% url 'diary-note-create' %}">
                     {% csrf_token %}
                     <fieldset class="form-group progress-time-form">
@@ -46,7 +46,7 @@
                             Share with your feelings, success and failures with your diary. Remember, You are only person who has access to here.
                             {% endif %}
                         </legend>
-                        <textarea class="progress-time-input" name="text" cols="33" rows="10" class="textarea" required id="id_text">
+                        <textarea class="progress-time-input" name="text" cols="26" rows="10" class="textarea" required id="id_text">
                         </textarea>
                     </fieldset>
                     <div class="form-group">
